@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //测试apply()
+        // var o = {
+        //     name: 'andy'
+        // };
+
+        // function fn(arr) {
+        //     console.log(this);
+        //     console.log(arr); // 'pink'
+
+        // };
+        // fn.apply(o, ['pink']);
+
+        function debounce(func, delay = 500) {
+            let timer = null
+            if (timer) {
+                clearTimeout(timer)
+            }
+            timer = setTimeout(() => {
+                console.log(this); //Window
+                func.apply(this, arguments)
+                // func()
+                timer = null
+            }, delay)
+        }
+        debounce(function () {
+            console.log(this); //Window
+        })
+
+        // var array = ['a', 'b'];
+        // let elements = [0, 1, 2];
+        // // array.push(elements) //["a", "b", Array(3)]
+        // array.push.apply(array, elements);
+        // console.info(array); // ["a", "b", 0, 1, 2]
+    </script>
+</body>
+
+</html>
